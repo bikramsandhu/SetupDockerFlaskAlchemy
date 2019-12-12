@@ -1,5 +1,5 @@
 FROM python:3.7
-COPY . /web
+COPY source_code /web
 WORKDIR /web
 RUN pip install -r ./requirements.txt
 ENTRYPOINT ["python"]
