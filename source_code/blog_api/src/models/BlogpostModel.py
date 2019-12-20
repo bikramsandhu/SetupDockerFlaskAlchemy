@@ -1,6 +1,8 @@
+from marshmallow import fields, Schema
+
 from . import db
 import datetime
-from marshmallow import fields, Schema
+
 
 class BlogPostModel(db.Model):
     __tablename__ = 'blogposts'
@@ -46,11 +48,13 @@ class BlogPostModel(db.Model):
 
     def __repr__(self):
         return '<id {}>'.format(self.id)
-  #add this class
- class BlogPostSchema(Schema):
-        id = fields.Int(dump_only=True)
-        title = fields.Str(required=True)
-        contents = fields.Str(required=True)
-        owner_id = fields.Int(required=True)
-        created_at = fields.DateTime(dump_only=True)
-        modified_at = fields.DateTime(dump_only=True)
+
+    "Blog Post schema "
+
+class BlogPostSchema(Schema):
+    id = fields.Int(dump_only=True)
+    title = fields.Str(required=True)
+    contents = fields.Str(required=True)
+    owner_id = fields.Int(required=True)
+    created_at = fields.DateTime(dump_only=True)
+    modified_at = fields.DateTime(dump_only=True)

@@ -1,5 +1,5 @@
 from marshmallow import fields, Schema
-from .BlogPostModel import BlogPostSchema
+from .BlogpostModel import BlogPostSchema
 import datetime
 from . import db
 from ..app import bcrypt
@@ -69,12 +69,11 @@ class UserModel(db.Model):
 
     "User Schema"
 
-    class UserSchema(Schema):
-
-        id = fields.Int(dump_only=True)
-        name = fields.Str(required=True)
-        email = fields.Email(required=True)
-        password = fields.Str(required=True)
-        created_at = fields.DateTime(dump_only=True)
-        modified_at = fields.DateTime(dump_only=True)
-        blogposts = fields.Nested(BlogPostSchema, many=True)
+class UserSchema(Schema):
+    id = fields.Int(dump_only=True)
+    name = fields.Str(required=True)
+    email = fields.Email(required=True)
+    password = fields.Str(required=True)
+    created_at = fields.DateTime(dump_only=True)
+    modified_at = fields.DateTime(dump_only=True)
+    blogposts = fields.Nested(BlogPostSchema, many=True)
